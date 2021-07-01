@@ -1,5 +1,5 @@
-// const axios = require('axios')
-// const url = 'http://checkip.amazonaws.com/';
+const axios = require("axios");
+const url = "https://alexbisaillion-master-website.herokuapp.com/";
 let response;
 
 /**
@@ -15,14 +15,12 @@ let response;
  *
  */
 exports.lambdaHandler = async (event, context) => {
+  console.log(event);
   try {
-    // const ret = await axios(url);
+    const res = await axios.get(url + "lastfm/getTopTracks");
     response = {
       statusCode: 200,
-      body: JSON.stringify({
-        message: "hello world",
-        // location: ret.data.trim()
-      }),
+      body: res.data,
     };
   } catch (err) {
     console.log(err);
