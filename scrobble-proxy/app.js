@@ -14,10 +14,11 @@ let response;
  * @returns {Object} object - API Gateway Lambda Proxy Output Format
  *
  */
-exports.lambdaHandler = async (event, context) => {
-  console.log(event);
+exports.lambdaHandler = async (event) => {
   try {
-    const res = await axios.get(url + "lastfm/getTopTracks");
+    const res = await axios.post(url + "job/refreshPlays", {
+      secret: event.secret,
+    });
     response = {
       statusCode: 200,
       body: res.data,
