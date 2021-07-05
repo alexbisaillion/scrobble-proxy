@@ -2,7 +2,7 @@ const axios = require("axios");
 const url = "https://music-library-server.herokuapp.com/";
 let response;
 
-exports.lambdaHandler = async (event) => {
+exports.scrobble = async (event) => {
   try {
     const res = await axios.post(url + "job/refreshPlays", {
       secret: event.secret,
